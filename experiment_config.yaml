@@ -1,0 +1,37 @@
+---
+# Basics
+comment: "01-05-01release_test"
+dir: "/g/data/y89/jp6476/EXPERIMENTS/"
+config: "/g/data/y89/jp6476/Astroconformer/config.yaml"
+checkpoint_dir: "/g/data/y89/jp6476/best_model_kepseismic.pth"
+kfold: false
+
+# Data
+dataset: "Seismic_logg"
+# assign_test: true
+transform: true
+# tr_val_test: [0.9, 0.1, 0.0]
+n_workers: 8
+
+# Model
+model: "Astroconformer"
+# in_channels: 1
+encoder: ["mhsa_pro", "conv", "conv"]
+# timeshift: false
+num_layers: 5
+encoder_dim: 128
+deepnorm: true
+
+# Training
+basic_lr: 2.0e-3
+num_cycles: 3
+lower_bound: 1.0e-2
+use_amp: true
+gradient_clip: 1.0
+batch_size: 256
+total_steps: 20000
+valid_steps: 100
+use_checkpoint: false
+from_pretrained: true
+check_gpu: true
+visualise_param: false

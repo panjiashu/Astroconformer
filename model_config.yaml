@@ -1,0 +1,111 @@
+---
+Transformer:
+  # Basics
+  checkpoint_dir: "/g/data/y89/jp6476/EXPERIMENTS/7-1-1Transformer/modelbestloss.ckpt"
+
+  # Data
+  dataset: "Kepseismic_token"
+
+  # Model
+  in_channels: 1
+  encoder: ["mhsa_pro", "ffn"]
+  gated: True
+  timeshift: False
+  num_layers: 7
+  stride: 80
+  encoder_dim: 128
+  num_heads: 8
+  dropout_p: 0.1
+  norm: "postnorm"
+
+  # Training
+  grad_clip: ~
+  batch_size: 64
+
+Transformer_NCE:
+  # Basics
+  checkpoint_dir: "/g/data/y89/jp6476/EXPERIMENTS/7-12-1Transformer_NCE/modelbestloss.ckpt"
+
+  # Data
+  dataset: "Kepseismic_token"
+
+  # Model
+  in_channels: 1
+  encoder: ["mhsa_pro", "ffn"]
+  gated: True
+  timeshift: False
+  num_layers: 7
+  stride: 80
+  encoder_dim: 128
+  num_heads: 8
+  kernel_size: 5
+  dropout_p: 0.1
+  norm: "postnorm"
+
+  # Training
+  batch_size: 64
+
+Astroconformer:
+  # Basics
+  checkpoint_dir: "/g/data/y89/jp6476/EXPERIMENTS/7-4-1astroconformer_numax/modelbestloss.ckpt"
+
+  # Data
+  dataset: "Seismic_logg"
+
+  # Model
+  in_channels: 1
+  encoder: ["mhsa_pro", "conv", "conv"]
+  timeshift: false
+  num_layers: 5
+  stride: 20
+  encoder_dim: 128
+  num_heads: 8
+  kernel_size: 3
+  dropout_p: 0.1
+  norm: "postnorm"
+
+  # Training
+  batch_size: 256
+
+Astroconformer_NCE:
+  # Basics
+  checkpoint_dir: "/g/data/y89/jp6476/EXPERIMENTS/5-4-1revisit/modelbestrms_1_fold2.ckpt"
+
+  # Data
+  dataset: "Kepseismic"
+
+  # Model
+  in_channels: 1
+  encoder: ["mhsa_pro", "conv", "conv"]
+  timeshift: false
+  num_layers: 5
+  stride: 20
+  encoder_dim: 128
+  num_heads: 8
+  kernel_size: 5
+  dropout_p: 0.1
+  norm: "postnorm"
+
+  # Training
+  batch_size: 64
+
+ResNetBaseline:
+  # Data
+  dataset: "Seismic_logg"
+
+  # Model
+  in_channels: 1
+  num_layers: 6
+  encoder_dim: 128
+
+  # Training
+  batch_size: 256
+
+ResNet18:
+  # Data
+  dataset: "Seismic_logg"
+
+  # Model is set in ResNet18.py
+
+  # Training
+  batch_size: 256

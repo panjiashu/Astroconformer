@@ -1,0 +1,54 @@
+# Basics
+randomseed: 42
+checkpoint_dir: "/g/data/y89/jp6476/EXPERIMENTS/7-1-1Transformer/modelbestloss.ckpt"
+
+# Data
+dataset: "Seismic_logg"
+assign_test: false
+transform: true
+segment_lens: [4000]
+sample_rates: [1]
+uniform_sample_flag: false
+tr_val_test: [0.72, 0.08, 0.2]
+n_workers: 8
+
+# Model
+in_channels: 1
+encoder: ["mhsa_pro", "conv", "conv"]
+timeshift: false
+num_layers: 5
+stride: 20
+encoder_dim: 128
+num_heads: 8
+kernel_size: 3
+dropout_p: 0.1
+norm: "postnorm"
+
+# Training
+optimizer: "adamw"
+basic_lr: 3.0e-3
+eps: 1.0e-5
+scheduler: "cyclic"
+num_cycles: 3
+lower_bound: 1.0e-3
+weight_decay: 1.0e-4
+use_amp: false
+grad_clip: false    
+batch_size: 256
+total_steps: 20000
+valid_steps: 35
+warmup_ratio: 0.1
+early_stop: 30000
+use_checkpoint: false
+save_checkpoint: true
+from_pretrained: false
+check_gpu: false
+visualize_param: false
+
+# Visualization
+visual_steps: 7000
+num_sample: 15
+
+# GPU
+use_gpu: true
+use_multi_gpu: false
